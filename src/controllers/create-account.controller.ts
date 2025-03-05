@@ -16,8 +16,6 @@ export class CreateAccountController {
 	async handle(@Body() body: any) {
 		const { name, email, password } = body;
 
-		console.log(body);
-
 		const userWithSameEmail = await this.prisma.user.findUnique({
 			where: {
 				email,
