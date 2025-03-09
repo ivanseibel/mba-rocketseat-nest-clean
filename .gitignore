@@ -60,3 +60,5 @@ data
 
 # REST Client extension
 client.http
+
+transcriptions
