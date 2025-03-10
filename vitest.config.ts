@@ -6,6 +6,7 @@ export default defineConfig({
 	test: {
 		globals: true,
 		includeSource: ["src/**/*.ts"],
+		exclude: ["node_modules", "dist", "data", "test"],
 		root: "./",
 	},
 	plugins: [
