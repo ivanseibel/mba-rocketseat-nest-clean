@@ -1,6 +1,6 @@
 import { AggregateRoot } from "@/core/entities/aggregate-root";
-import type { UniqueEntityID } from "@/core/entities/unique-entity-id";
-import type { Optional } from "@/core/types/optional";
+import { UniqueEntityID } from "@/core/entities/unique-entity-id";
+import { Optional } from "@/core/types/optional";
 import { AnswerAttachmentList } from "@/domain/forum/enterprise/entities/answer-attachment-list";
 import { AnswerCreatedEvent } from "@/domain/forum/enterprise/events/answer-created-event";
 
@@ -10,7 +10,7 @@ export interface AnswerProps {
 	content: string;
 	attachments: AnswerAttachmentList;
 	createdAt: Date;
-	updatedAt?: Date;
+	updatedAt?: Date | null;
 }
 
 export class Answer extends AggregateRoot<AnswerProps> {
@@ -26,8 +26,18 @@ export class Answer extends AggregateRoot<AnswerProps> {
 		return this.props.content;
 	}
 
+	set content(content: string) {
+		this.props.content = content;
+		this.touch();
+	}
+
 	get attachments() {
 		return this.props.attachments;
+	}
+
+	set attachments(attachments: AnswerAttachmentList) {
+		this.props.attachments = attachments;
+		this.touch();
 	}
 
 	get createdAt() {
@@ -44,16 +54,6 @@ export class Answer extends AggregateRoot<AnswerProps> {
 
 	private touch() {
 		this.props.updatedAt = new Date();
-	}
-
-	set content(content: string) {
-		this.props.content = content;
-		this.touch();
-	}
-
-	set attachments(attachments: AnswerAttachmentList) {
-		this.props.attachments = attachments;
-		this.touch();
 	}
 
 	static create(
