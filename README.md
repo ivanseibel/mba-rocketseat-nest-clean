@@ -35,34 +35,40 @@ Make sure you have the following installed:
 ### Installation
 
 1. Clone the repository:
-    ```sh
+    
+    ```bash
     git clone <repository-url>
     cd <repository-directory>
     ```
 
 2. Install dependencies:
-    ```sh
+    
+    ```bash
     pnpm install
     ```
 
 3. Set up the environment variables:
-    ```sh
+    
+    ```bash
     cp .env.template .env
     # Edit the .env file with your configuration
     ```
 
 4. Start the PostgreSQL database using Docker:
-    ```sh
+    
+    ```bash
     docker-compose up -d
     ```
 
 5. Run the Prisma migrations:
-    ```sh
+    
+    ```bash
     pnpm prisma migrate dev
     ```
 
 6. Start the development server:
-    ```sh
+    
+    ```bash
     pnpm start:dev
     ```
 
@@ -73,14 +79,6 @@ Make sure you have the following installed:
 1. **Domain Layer**: Define or update the domain entities and use cases in the `src/domain/` directory.
 2. **Application Layer**: Implement the use cases and services in the `src/application/` directory.
 3. **Infrastructure Layer**: Update the infrastructure-related code in the `src/infra/` directory, such as repositories and data mappers.
-
-### Contributing
-
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -am 'Add some feature'`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Create a new Pull Request.
 
 ## License
 
